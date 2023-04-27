@@ -52,12 +52,18 @@ namespace LINQ_HighSchool4.Controllers
 
         public async Task<IActionResult> Teacher()
         {
+            return View();
+        }
+
+
+        public async Task<IActionResult> DisplayTeacher(string CourseName)
+        {
             List<SchoolViewModel> list = new List<SchoolViewModel>();
 
             var items = await (from t in _context.Teachers
                                join tc in _context.TeachersCourses on t.TeacherID equals tc.FK_TeacherId
                                join co in _context.Courses on tc.FK_CourseId equals co.CourseId
-                               where co.CourseName == "Programmering 1"
+                               where co.CourseName == CourseName
                                select new
                                {
                                    TeacherFName = t.FirstName,
@@ -77,7 +83,12 @@ namespace LINQ_HighSchool4.Controllers
             return View(list);
         }
 
-        public async Task<IActionResult> Student()
+        public async Task<IActionResult> Students()
+        {
+            return View();
+        }
+
+        public async Task<IActionResult> DisplayStudents(string ClassName)
         {
             List<SchoolViewModel> list = new List<SchoolViewModel>();
 
@@ -88,7 +99,7 @@ namespace LINQ_HighSchool4.Controllers
                                join tc in _context.TeachersCourses on co.CourseId equals tc.FK_CourseId
                                join t in _context.Teachers on tc.FK_TeacherId equals t.TeacherID
                                join tcc in _context.TeachersClassCourses on t.TeacherID equals tcc.FK_TeacherId
-                               where t.TeacherID == tcc.FK_TeacherId && cl.ClassId == tcc.FK_ClassId && co.CourseName == "Programmering 1"
+                               where t.TeacherID == tcc.FK_TeacherId && cl.ClassId == tcc.FK_ClassId && cl.ClassName == ClassName
                                select new
                                {
                                    StudentFName = s.FirstName,
@@ -156,11 +167,6 @@ namespace LINQ_HighSchool4.Controllers
             var newTeacher = (from t in _context.Teachers
                               where t.LastName == TeacherLName
                               select t).FirstOrDefault();
-
-            if (newTeacher == null || currentTeacher == null)
-            {
-                return NotFound("Either teacher,class or course was not found. Please try again");
-            }
 
             var updateTeacher = (from tcc in _context.TeachersClassCourses
                                  where tcc.FK_TeacherId == currentTeacher.TeacherID

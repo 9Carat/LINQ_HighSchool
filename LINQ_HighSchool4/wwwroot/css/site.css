@@ -20,3 +20,12 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.subMenu {
+    text-align: center;
+}
+
+.subMenu a {
+    margin: 2%;
+    color: darkgray;
+}

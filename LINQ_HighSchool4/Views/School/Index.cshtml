@@ -3,9 +3,9 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>School overview</h1>
+<h1>School Information</h1>
 
-<table>
+<table class="table">
     <thead>
     <th>@Html.DisplayNameFor(model => model.StudentFName)</th>
     <th>@Html.DisplayNameFor(model => model.StudentLName)</th>
@@ -28,3 +28,10 @@
         }
     </tbody>
 </table>
+
+<div class="subMenu">
+    <a asp-action="Teacher">Search Teachers</a>
+    <a asp-action="Students">Search Students</a>
+    <a asp-action="CourseName">Edit Course Name</a>
+    <a asp-action="UpdateTeacher">Update Teacher</a>
+</div>

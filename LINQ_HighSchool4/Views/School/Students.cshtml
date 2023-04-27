@@ -1,16 +1,16 @@
 ﻿
 @{
-    ViewData["Title"] = "Teacher";
+    ViewData["Title"] = "Students";
 }
 
-<h1>Select course</h1>
+<h1>Select class</h1>
 
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="DisplayTeacher">
+        <form asp-action="DisplayStudents">
             <div class="form-group">
-                <label for="CourseName" class="control-label">Course name</label>
-                <input name="CourseName" class="form-control">
+                <label for="ClassName" class="control-label">Class name</label>
+                <input name="ClassName" class="form-control">
             </div>
             <div class="form-group">
                 <input type="submit" value="Edit" class="btn btn-primary" />
