@@ -1,0 +1,30 @@
+﻿@model IEnumerable<SchoolViewModel>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>School overview</h1>
+
+<table>
+    <thead>
+    <th>@Html.DisplayNameFor(model => model.StudentFName)</th>
+    <th>@Html.DisplayNameFor(model => model.StudentLName)</th>
+    <th>@Html.DisplayNameFor(model => model.ClassName)</th>
+    <th>@Html.DisplayNameFor(model => model.CourseName)</th>
+    <th>@Html.DisplayNameFor(model => model.TeacherFName)</th>
+    <th>@Html.DisplayNameFor(model => model.TeacherLName)</th>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.StudentFName)</td>
+                <td>@Html.DisplayFor(modelItem => item.StudentLName)</td>
+                <td>@Html.DisplayFor(modelItem => item.ClassName)</td>
+                <td>@Html.DisplayFor(modelItem => item.CourseName)</td>
+                <td>@Html.DisplayFor(modelItem => item.TeacherFName)</td>
+                <td>@Html.DisplayFor(modelItem => item.TeacherLName)</td>
+            </tr>
+        }
+    </tbody>
+</table>
